@@ -1,0 +1,103 @@
+{{define "content"}}
+<section class="py-16 px-4">
+    <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="font-[Orbitron] text-4xl md:text-5xl font-bold tracking-wider text-matrix-green glow-text mb-4">
+                // Contacto
+            </h1>
+            <p class="text-matrix-green-dark text-sm font-[Share_Tech_Mono]">
+                > Envíanos un mensaje y te responderemos pronto<span class="terminal-cursor"></span>
+            </p>
+        </div>
+
+        <form id="contactForm" class="matrix-card rounded-lg p-8 md:p-12 glow-border">
+            <div class="text-matrix-green-dark text-xs font-[Share_Tech_Mono] mb-8 uppercase tracking-widest">
+                $ init contact_form --mode=secure
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Nombre -->
+                <div>
+                    <label class="block text-matrix-green text-xs font-[Orbitron] uppercase tracking-wider mb-2" for="nombre">
+                        > Nombre
+                    </label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre"
+                        class="matrix-input rounded" required>
+                </div>
+
+                <!-- Apellido -->
+                <div>
+                    <label class="block text-matrix-green text-xs font-[Orbitron] uppercase tracking-wider mb-2" for="apellido">
+                        > Apellido
+                    </label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Tu apellido"
+                        class="matrix-input rounded" required>
+                </div>
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-6">
+                <label class="block text-matrix-green text-xs font-[Orbitron] uppercase tracking-wider mb-2" for="correo">
+                    > Correo electrónico
+                </label>
+                <input type="email" id="correo" name="correo" placeholder="tu@correo.com"
+                    class="matrix-input rounded" required>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="mb-6">
+                <label class="block text-matrix-green text-xs font-[Orbitron] uppercase tracking-wider mb-2" for="telefono">
+                    > Número de teléfono
+                </label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+56 9 XXXX XXXX"
+                    class="matrix-input rounded">
+            </div>
+
+            <!-- Mensaje -->
+            <div class="mb-8">
+                <label class="block text-matrix-green text-xs font-[Orbitron] uppercase tracking-wider mb-2" for="mensaje">
+                    > Mensaje
+                </label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."
+                    class="matrix-input rounded resize-none" required></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+                <button type="submit" class="matrix-btn rounded text-sm">
+                    [ ENVIAR TRANSMISIÓN ]
+                </button>
+            </div>
+
+            <!-- Success message (hidden by default) -->
+            <div id="successMsg" class="hidden mt-8 text-center">
+                <div class="matrix-divider mb-4"></div>
+                <p class="text-matrix-green font-[Share_Tech_Mono] glow-text-sm">
+                    > TRANSMISIÓN ENVIADA EXITOSAMENTE
+                </p>
+                <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono] mt-2">
+                    Te contactaremos pronto. [ STATUS: OK ]
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Simulate form submission
+        const btn = this.querySelector('button[type="submit"]');
+        btn.textContent = '[ PROCESANDO... ]';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.textContent = '[ TRANSMISIÓN COMPLETA ]';
+            document.getElementById('successMsg').classList.remove('hidden');
+            this.querySelectorAll('input, textarea').forEach(el => {
+                el.value = '';
+            });
+        }, 1500);
+    });
+</script>
+{{end}}

@@ -1,0 +1,168 @@
+{{define "content"}}
+<!-- Hero Section -->
+<section class="grid-overlay min-h-[80vh] flex items-center justify-center relative px-4">
+    <div class="text-center max-w-3xl mx-auto">
+        <h1 class="font-[Orbitron] text-5xl md:text-7xl font-black tracking-wider text-matrix-green glow-text mb-4">
+            &lt;n!&gt;
+        </h1>
+        <p class="text-matrix-green-dim text-lg md:text-xl font-[Share_Tech_Mono] mb-2 tracking-wide">
+            Comunidad de Código y Matemáticas
+        </p>
+        <p class="text-matrix-green-dark text-sm font-[Share_Tech_Mono] mb-10">
+            > Universidad Diego Portales<span class="terminal-cursor"></span>
+        </p>
+        <a href="#mision" class="matrix-btn inline-block">
+            [ EXPLORAR ]
+        </a>
+    </div>
+</section>
+
+<!-- Misión Section -->
+<section id="mision" class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="section-title glow-text-sm">// Nuestra Misión</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="matrix-card p-8 rounded-lg glow-border">
+                <div class="text-matrix-green-dark text-xs font-[Share_Tech_Mono] mb-4 uppercase tracking-widest">$ cat
+                    mision.txt</div>
+                <p class="text-matrix-green-dim leading-relaxed text-sm">
+                    En <span class="text-matrix-green font-bold">n!</span> creemos que el código y las matemáticas son
+                    las herramientas fundamentales del futuro.
+                    Nuestra misión es crear un espacio donde estudiantes de todas las carreras puedan aprender,
+                    colaborar y crecer en el mundo de la tecnología.
+                </p>
+                <div class="matrix-divider my-6"></div>
+                <p class="text-matrix-green-dim leading-relaxed text-sm">
+                    Organizamos talleres, hackatones, charlas y sesiones de estudio donde combinamos
+                    la teoría matemática con la práctica de la programación. Porque creemos que entender
+                    el "por qué" es tan importante como saber el "cómo".
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="matrix-card p-6 rounded-lg flex items-start gap-4">
+                    <span class="text-matrix-green font-[Orbitron] text-2xl font-bold mt-1">01</span>
+                    <div>
+                        <h3 class="text-matrix-green font-[Orbitron] text-sm uppercase tracking-wider mb-2">Aprendizaje
+                            Colaborativo</h3>
+                        <p class="text-matrix-green-dark text-xs leading-relaxed">Sesiones semanales de programación y
+                            resolución de problemas matemáticos en grupo.</p>
+                    </div>
+                </div>
+                <div class="matrix-card p-6 rounded-lg flex items-start gap-4">
+                    <span class="text-matrix-green font-[Orbitron] text-2xl font-bold mt-1">02</span>
+                    <div>
+                        <h3 class="text-matrix-green font-[Orbitron] text-sm uppercase tracking-wider mb-2">Open Source
+                        </h3>
+                        <p class="text-matrix-green-dark text-xs leading-relaxed">Contribuimos a proyectos de código
+                            abierto y desarrollamos herramientas para la comunidad.</p>
+                    </div>
+                </div>
+                <div class="matrix-card p-6 rounded-lg flex items-start gap-4">
+                    <span class="text-matrix-green font-[Orbitron] text-2xl font-bold mt-1">03</span>
+                    <div>
+                        <h3 class="text-matrix-green font-[Orbitron] text-sm uppercase tracking-wider mb-2">Innovación
+                        </h3>
+                        <p class="text-matrix-green-dark text-xs leading-relaxed">Exploramos nuevas tecnologías e ideas
+                            que conectan las matemáticas con el desarrollo de software.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="matrix-divider max-w-4xl mx-auto"></div>
+
+<!-- Integrantes Section -->
+<section id="integrantes" class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="section-title glow-text-sm">// Nuestros Integrantes</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {{range .Integrantes}}
+            <div class="matrix-card rounded-lg p-6 text-center">
+                <div class="member-avatar rounded-full mx-auto mb-4">
+                    <span>{{.Avatar}}</span>
+                </div>
+                <h3 class="text-matrix-green font-[Orbitron] text-sm font-bold tracking-wider mb-1">{{.Nombre}}</h3>
+                <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono] mb-3">{{.Rol}}</p>
+                <p class="text-matrix-green-dark text-xs leading-relaxed">{{.Detalle}}</p>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+
+<div class="matrix-divider max-w-4xl mx-auto"></div>
+
+<!-- Galería Section -->
+<section id="galeria" class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="section-title glow-text-sm">// Galería</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="gallery-item rounded-lg aspect-video bg-matrix-panel flex items-center justify-center">
+                <div class="text-center p-4">
+                    <div class="text-matrix-green-dark text-3xl mb-2 font-[Orbitron]">01</div>
+                    <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">Hackaton 2026</p>
+                    <p class="text-matrix-green-dark text-[10px] mt-1">[ IMG_LOADING... ]</p>
+                </div>
+            </div>
+
+            <div class="gallery-item rounded-lg aspect-video bg-matrix-panel flex items-center justify-center">
+                <div class="text-center p-4">
+                    <div class="text-matrix-green-dark text-3xl mb-2 font-[Orbitron]">02</div>
+                    <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">Taller de Go</p>
+                    <p class="text-matrix-green-dark text-[10px] mt-1">[ IMG_LOADING... ]</p>
+                </div>
+            </div>
+
+            <div class="gallery-item rounded-lg aspect-video bg-matrix-panel flex items-center justify-center">
+                <div class="text-center p-4">
+                    <div class="text-matrix-green-dark text-3xl mb-2 font-[Orbitron]">03</div>
+                    <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">Sesión Matemáticas</p>
+                    <p class="text-matrix-green-dark text-[10px] mt-1">[ IMG_LOADING... ]</p>
+                </div>
+            </div>
+
+            <div class="gallery-item rounded-lg aspect-video bg-matrix-panel flex items-center justify-center">
+                <div class="text-center p-4">
+                    <div class="text-matrix-green-dark text-3xl mb-2 font-[Orbitron]">04</div>
+                    <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">Open Source Friday</p>
+                    <p class="text-matrix-green-dark text-[10px] mt-1">[ IMG_LOADING... ]</p>
+                </div>
+            </div>
+
+            <div class="gallery-item rounded-lg aspect-video bg-matrix-panel flex items-center justify-center">
+                <div class="text-center p-4">
+                    <div class="text-matrix-green-dark text-3xl mb-2 font-[Orbitron]">05</div>
+                    <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">Charla IA</p>
+                    <p class="text-matrix-green-dark text-[10px] mt-1">[ IMG_LOADING... ]</p>
+                </div>
+            </div>
+
+            <div class="gallery-item rounded-lg aspect-video bg-matrix-panel flex items-center justify-center">
+                <div class="text-center p-4">
+                    <div class="text-matrix-green-dark text-3xl mb-2 font-[Orbitron]">06</div>
+                    <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">Equipo n!</p>
+                    <p class="text-matrix-green-dark text-[10px] mt-1">[ IMG_LOADING... ]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">
+                > Las imágenes serán cargadas próximamente<span class="terminal-cursor"></span>
+            </p>
+        </div>
+    </div>
+</section>
+{{end}}

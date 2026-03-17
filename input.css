@@ -1,0 +1,381 @@
+@import "tailwindcss";
+
+/* ===== Y2K / Matrix Custom Theme ===== */
+
+@theme {
+  --color-matrix-black: #0a0a0a;
+  --color-matrix-dark: #0d0d0d;
+  --color-matrix-panel: #111111;
+  --color-matrix-border: #1a3a1a;
+  --color-matrix-green: #00ff41;
+  --color-matrix-green-dim: #00cc33;
+  --color-matrix-green-dark: #006622;
+  --color-matrix-green-glow: #00ff4180;
+  --color-matrix-amber: #ffb300;
+  --color-matrix-red: #ff3333;
+
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+  --font-display: 'Orbitron', 'Share Tech Mono', monospace;
+}
+
+/* ===== Global Styles ===== */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-matrix-green-dark) var(--color-matrix-black);
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--color-matrix-black);
+  color: var(--color-matrix-green);
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+::selection {
+  background: var(--color-matrix-green);
+  color: var(--color-matrix-black);
+}
+
+/* ===== Matrix Rain Background ===== */
+
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.04;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ctext x='10' y='20' fill='%2300ff41' font-family='monospace' font-size='14'%3E0%3C/text%3E%3Ctext x='30' y='45' fill='%2300ff41' font-family='monospace' font-size='14'%3E1%3C/text%3E%3Ctext x='45' y='15' fill='%2300ff41' font-family='monospace' font-size='14'%3En%3C/text%3E%3Ctext x='5' y='55' fill='%2300ff41' font-family='monospace' font-size='14'%3E!%3C/text%3E%3C/svg%3E");
+}
+
+/* ===== Glow Effects ===== */
+
+.glow-text {
+  text-shadow: 0 0 7px var(--color-matrix-green-glow),
+               0 0 15px var(--color-matrix-green-glow),
+               0 0 30px rgba(0, 255, 65, 0.2);
+}
+
+.glow-text-sm {
+  text-shadow: 0 0 5px var(--color-matrix-green-glow),
+               0 0 10px rgba(0, 255, 65, 0.15);
+}
+
+.glow-border {
+  box-shadow: 0 0 5px var(--color-matrix-green-glow),
+              inset 0 0 5px rgba(0, 255, 65, 0.05);
+}
+
+.glow-border-hover:hover {
+  box-shadow: 0 0 10px var(--color-matrix-green-glow),
+              0 0 20px rgba(0, 255, 65, 0.15),
+              inset 0 0 10px rgba(0, 255, 65, 0.08);
+}
+
+/* ===== Navbar ===== */
+
+.navbar {
+  background: linear-gradient(180deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.92) 100%);
+  border-bottom: 1px solid var(--color-matrix-border);
+  backdrop-filter: blur(10px);
+}
+
+.nav-link {
+  color: var(--color-matrix-green-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::before {
+  content: '> ';
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-matrix-green);
+  text-shadow: 0 0 8px var(--color-matrix-green-glow);
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: var(--color-matrix-green);
+  text-shadow: 0 0 8px var(--color-matrix-green-glow);
+}
+
+.nav-link.active::before {
+  opacity: 1;
+}
+
+/* ===== Cards ===== */
+
+.matrix-card {
+  background: var(--color-matrix-panel);
+  border: 1px solid var(--color-matrix-border);
+  transition: all 0.4s ease;
+}
+
+.matrix-card:hover {
+  border-color: var(--color-matrix-green-dark);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.08),
+              inset 0 0 15px rgba(0, 255, 65, 0.03);
+  transform: translateY(-2px);
+}
+
+/* ===== Buttons ===== */
+
+.matrix-btn {
+  background: transparent;
+  border: 1px solid var(--color-matrix-green);
+  color: var(--color-matrix-green);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.matrix-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.matrix-btn:hover {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 15px var(--color-matrix-green-glow),
+              inset 0 0 15px rgba(0, 255, 65, 0.05);
+}
+
+.matrix-btn:hover::before {
+  left: 100%;
+}
+
+/* ===== Form Inputs ===== */
+
+.matrix-input {
+  background: var(--color-matrix-black);
+  border: 1px solid var(--color-matrix-border);
+  color: var(--color-matrix-green);
+  font-family: var(--font-mono);
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.matrix-input::placeholder {
+  color: var(--color-matrix-green-dark);
+}
+
+.matrix-input:focus {
+  outline: none;
+  border-color: var(--color-matrix-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.15),
+              inset 0 0 10px rgba(0, 255, 65, 0.05);
+}
+
+/* ===== Section Titles ===== */
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-matrix-green);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-matrix-green), transparent);
+}
+
+/* ===== Terminal-style decorations ===== */
+
+.terminal-prefix::before {
+  content: '$ ';
+  color: var(--color-matrix-green-dark);
+}
+
+.terminal-cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--color-matrix-green);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ===== Divider ===== */
+
+.matrix-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-matrix-green-dark), transparent);
+}
+
+/* ===== Gallery ===== */
+
+.gallery-item {
+  overflow: hidden;
+  border: 1px solid var(--color-matrix-border);
+  transition: all 0.4s ease;
+}
+
+.gallery-item:hover {
+  border-color: var(--color-matrix-green-dark);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.gallery-item img {
+  transition: all 0.6s ease;
+  filter: grayscale(60%) brightness(0.7) contrast(1.2);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+  filter: grayscale(20%) brightness(0.85) contrast(1.1);
+}
+
+/* ===== Footer ===== */
+
+.footer {
+  background: var(--color-matrix-dark);
+  border-top: 1px solid var(--color-matrix-border);
+}
+
+.footer-link {
+  color: var(--color-matrix-green-dim);
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--color-matrix-green);
+  text-shadow: 0 0 8px var(--color-matrix-green-glow);
+}
+
+/* ===== Typing animation for hero ===== */
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-matrix-green);
+  animation: typing 3s steps(40) 1s forwards, blinkCaret 0.75s step-end infinite;
+  width: 0;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCaret {
+  50% { border-color: transparent; }
+}
+
+/* ===== Pulse animation ===== */
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ===== Grid pattern overlay for hero ===== */
+
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ===== Mobile menu ===== */
+
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* ===== Member card avatar ===== */
+
+.member-avatar {
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--color-matrix-green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-matrix-green);
+  background: var(--color-matrix-black);
+  transition: all 0.3s ease;
+}
+
+.matrix-card:hover .member-avatar {
+  border-color: var(--color-matrix-green);
+  box-shadow: 0 0 10px var(--color-matrix-green-glow);
+}
+
+/* ===== Blog tag ===== */
+
+.blog-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--color-matrix-green-dark);
+  color: var(--color-matrix-green-dim);
+}

@@ -1,0 +1,17 @@
+{
+  "name": "nfact-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./static/css/style.css",
+    "dev:css": "tailwindcss -i ./input.css -o ./static/css/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}

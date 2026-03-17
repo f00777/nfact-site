@@ -1,0 +1,98 @@
+{{define "content"}}
+<section class="py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+        <!-- Back link -->
+        <a href="/blog" class="text-matrix-green-dark text-sm font-[Share_Tech_Mono] hover:text-matrix-green transition-colors mb-8 inline-block">
+            &lt; Volver al blog
+        </a>
+
+        <article class="matrix-card rounded-lg p-8 md:p-12 glow-border">
+            <!-- Tags & Date -->
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                {{range .Post.Tags}}
+                <span class="blog-tag">{{.}}</span>
+                {{end}}
+                <span class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">{{.Post.Date}}</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-[Orbitron] text-2xl md:text-4xl font-bold text-matrix-green tracking-wide mb-4 glow-text-sm">
+                {{.Post.Title}}
+            </h1>
+
+            <!-- Author -->
+            <p class="text-matrix-green-dark text-sm font-[Share_Tech_Mono] mb-8">
+                > Escrito por {{.Post.Author}}
+            </p>
+
+            <div class="matrix-divider mb-8"></div>
+
+            <!-- Content -->
+            <div class="prose-matrix">
+                {{.Post.Content}}
+            </div>
+
+            <div class="matrix-divider my-8"></div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-between">
+                <a href="/blog" class="matrix-btn text-xs py-2 px-4">
+                    [ &lt; VOLVER ]
+                </a>
+                <span class="text-matrix-green-dark text-xs font-[Share_Tech_Mono] animate-pulse-glow">
+                    [ EOF ]
+                </span>
+            </div>
+        </article>
+    </div>
+</section>
+
+<style>
+    .prose-matrix p {
+        color: var(--color-matrix-green-dim);
+        font-size: 0.9rem;
+        line-height: 1.8;
+        margin-bottom: 1.25rem;
+    }
+    .prose-matrix h3 {
+        color: var(--color-matrix-green);
+        font-family: 'Orbitron', monospace;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    .prose-matrix ul {
+        list-style: none;
+        padding-left: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    .prose-matrix ul li {
+        color: var(--color-matrix-green-dim);
+        font-size: 0.85rem;
+        line-height: 2;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .prose-matrix ul li::before {
+        content: '> ';
+        position: absolute;
+        left: 0;
+        color: var(--color-matrix-green-dark);
+    }
+    .prose-matrix pre {
+        background: var(--color-matrix-black);
+        border: 1px solid var(--color-matrix-border);
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+    .prose-matrix code {
+        color: var(--color-matrix-green);
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 0.85rem;
+    }
+</style>
+{{end}}

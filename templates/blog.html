@@ -1,0 +1,44 @@
+{{define "content"}}
+<section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="font-[Orbitron] text-4xl md:text-5xl font-bold tracking-wider text-matrix-green glow-text mb-4">
+                // Blog
+            </h1>
+            <p class="text-matrix-green-dark text-sm font-[Share_Tech_Mono]">
+                > Artículos, tutoriales y reflexiones de la comunidad n!<span class="terminal-cursor"></span>
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            {{range .Posts}}
+            <article class="matrix-card rounded-lg p-8 glow-border group">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    {{range .Tags}}
+                    <span class="blog-tag">{{.}}</span>
+                    {{end}}
+                    <span class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">{{.Date}}</span>
+                </div>
+
+                <h2 class="font-[Orbitron] text-xl md:text-2xl font-bold text-matrix-green tracking-wide mb-3 group-hover:glow-text transition-all duration-300">
+                    <a href="/blog/{{.Slug}}" class="hover:text-matrix-green">
+                        {{.Title}}
+                    </a>
+                </h2>
+
+                <p class="text-matrix-green-dim text-sm leading-relaxed mb-4">
+                    {{.Summary}}
+                </p>
+
+                <div class="flex items-center justify-between">
+                    <span class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">por {{.Author}}</span>
+                    <a href="/blog/{{.Slug}}" class="matrix-btn text-xs py-2 px-4">
+                        [ LEER MÁS ]
+                    </a>
+                </div>
+            </article>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}
