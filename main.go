@@ -24,7 +24,7 @@ func parseTemplate(page string) *template.Template {
 	))
 }
 
-func main() {
+func init() {
 	// Serve static files
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
@@ -113,7 +113,14 @@ func main() {
 			http.Error(w, "Internal Server Error", 500)
 		}
 	})
+}
 
+// Handler is the entry point for Vercel Serverless Functions.
+func Handler(w http.ResponseWriter, r *http.Request) {
+	http.DefaultServeMux.ServeHTTP(w, r)
+}
+
+func main() {
 	log.Println("Server started on http://localhost:8081")
 	err := http.ListenAndServe(":8081", nil)
 	if err != nil {
