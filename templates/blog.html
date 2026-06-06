@@ -10,6 +10,7 @@
             </p>
         </div>
 
+        {{if .Posts}}
         <div class="space-y-6">
             {{range .Posts}}
             <article class="matrix-card rounded-lg p-8 glow-border group">
@@ -39,6 +40,14 @@
             </article>
             {{end}}
         </div>
+        {{else}}
+        <div class="matrix-card rounded-lg p-12 glow-border text-center">
+            <p class="text-matrix-green font-[Orbitron] text-sm uppercase tracking-widest mb-3">Próximamente</p>
+            <p class="text-matrix-green-dark text-xs font-[Share_Tech_Mono]">
+                > Los primeros artículos están en camino<span class="terminal-cursor"></span>
+            </p>
+        </div>
+        {{end}}
     </div>
 </section>
 {{end}}
